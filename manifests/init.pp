@@ -15,8 +15,11 @@ class tor (
 	$runasdaemon = undef,
 	$datadirectory = '/var/lib/tor',
 	$controlport = undef,
+	$controlsocket = '/var/run/tor/control',
+	$controlsocketgroupreadable = '1',
 	$hashedcontrolpassword = undef,
 	$cookieauthentication = undef,
+	$cookieauthfile = '/var/run/tor/control.authcookie',
 	$hiddenservicedir = undef,
 	$hiddenserviceport = [],
 	$orport = undef,
@@ -31,7 +34,14 @@ class tor (
 	$exitpolicy = ['reject *:*'],
 	$bridgerelay = undef,
 	$publishserverdesciptor = undef,
-
+	$circuitbuildtimeout = undef,
+	$keepaliveperiod = undef,
+	$newcircuitperiod = undef,
+	$numentryguards = undef,
+	$dnsport = undef,
+	$automaphostsonresolve = undef,
+	$automaphostssuffixes = [],
+	$excludeexitnodes = [],
 ) {
 
 	validate_string($package_ensure)
@@ -51,6 +61,7 @@ class tor (
 	validate_string($controlport)
 	validate_string($hashedcontrolpassword)
 	validate_string($cookieauthentication)
+	validate_absolute_path($cookieauthfile)
 	validate_string($hiddenservicedir)
 	validate_array($hiddenserviceport)
 	validate_string($orport)
@@ -60,6 +71,14 @@ class tor (
 	validate_string($relaybandwidthburst)
 	validate_string($accountingstart)
 	validate_string($dirport)
+	validate_string($circuitbuildtimeout)
+	validate_string($keepaliveperiod)
+	validate_string($newcircuitperiod)
+	validate_string($numentryguards)
+	validate_string($dnsport)
+	validate_string($automaphostsonresolve)
+	validate_array($automaphostssuffixes)
+	validate_array($excludeexitnodes)
 
 	if $dirportfrontpage {
 
