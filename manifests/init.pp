@@ -8,7 +8,9 @@ class tor (
 	$service_ensure = running,
 	$service_name = 'tor',
 
+	$config_purge = true,
 	$configdir = '/etc/tor',
+
 	$socksport = ['9050'],
 	$sockspolicy = ['accept 127.0.0.0/8', 'reject *'],
 	$lognotice = 'notice syslog',
@@ -52,7 +54,9 @@ class tor (
 	validate_string($service_ensure)
 	validate_string($service_name)
 
+	validate_bool($config_purge)
 	validate_absolute_path($configdir)
+
 	validate_array($socksport)
 	validate_array($sockspolicy)
 	validate_string($lognotice)
@@ -88,7 +92,6 @@ class tor (
 	validate_array($exitpolicy)
 	validate_string($bridgerelay)
 	validate_string($publishserverdesciptor)
-
 
 	class{ 'tor::install': }->
 	class{ 'tor::config': }->
