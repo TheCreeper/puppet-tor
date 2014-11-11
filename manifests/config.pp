@@ -2,7 +2,7 @@ class tor::config{
 
 	file { "${tor::configdir}/torrc":
 
-		notify => service[$tor::service_name],
+		notify => Service[$tor::service_name],
 
 		ensure=> present,
 		mode => '0644',
