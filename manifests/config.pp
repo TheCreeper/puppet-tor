@@ -28,7 +28,7 @@ class tor::config{
 		notify => Service[$tor::service_name],
 
 		ensure=> $config_ensure,
-		mode => '0640',
+		mode => '0644',
 		owner => 'root',
 		group => 'root',
 		path => "${tor::configdir}/torrc",
