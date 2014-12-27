@@ -1,6 +1,6 @@
 class tor (
 
-	$package_ensure = latest,
+	$package_ensure = present,
 	$package_name = 'tor',
 
 	$service_manage = true,
@@ -12,7 +12,9 @@ class tor (
 	$configdir = '/etc/tor',
 
 	$socksport = ['9050'],
-	$sockspolicy = ['accept 127.0.0.0/8', 'reject *'],
+	$sockspolicy = [],
+	$contactinfo = undef,
+	$nickname = undef,
 	$lognotice = 'notice syslog',
 	$runasdaemon = undef,
 	$datadirectory = '/var/lib/tor',
@@ -21,8 +23,8 @@ class tor (
 	$controlsocketgroupreadable = '1',
 	$hashedcontrolpassword = undef,
 	$cookieauthentication = undef,
-	$cookieauthfile = '/var/run/tor/control.authcookie',
-	$hiddenservicedir = undef,
+	$cookieauthfile = undef,
+	$hiddenservicedir = '/var/lib/tor/hidden_service/',
 	$hiddenserviceport = [],
 	$orport = undef,
 	$address = undef,
@@ -55,18 +57,38 @@ class tor (
 	validate_string($service_name)
 
 	validate_bool($config_purge)
-	validate_absolute_path($configdir)
+
+	if $configdir {
+
+		validate_absolute_path($configdir)
+	}
 
 	validate_array($socksport)
 	validate_array($sockspolicy)
+	validate_string($contactinfo)
+	validate_string($nickname)
 	validate_string($lognotice)
 	validate_string($runasdaemon)
-	validate_absolute_path($datadirectory)
+
+	if $datadirectory {
+
+		validate_absolute_path($datadirectory)
+	}
+
 	validate_string($controlport)
 	validate_string($hashedcontrolpassword)
 	validate_string($cookieauthentication)
-	validate_absolute_path($cookieauthfile)
-	validate_string($hiddenservicedir)
+
+	if $cookieauthfile {
+
+		validate_absolute_path($cookieauthfile)
+	}
+
+	if $hiddenservicedir {
+
+		validate_absolute_path($hiddenservicedir)
+	}
+
 	validate_array($hiddenserviceport)
 	validate_string($orport)
 	validate_string($address)

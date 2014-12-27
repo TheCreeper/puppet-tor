@@ -1,0 +1,142 @@
+###
+### File managed by Puppet
+###
+
+<% if @socksport != [] -%>
+<% @socksport.each do |v| -%>
+SocksPort <%= v %>
+<% end -%>
+<% end -%>
+
+<% if @sockspolicy != [] -%>
+<% @sockspolicy.each do |v| -%>
+SocksPolicy <%= v %>
+<% end -%>
+<% end -%>
+
+<% if @lognotice -%>
+Log <%= @lognotice %>
+<% end -%>
+
+<% if @runasdaemon -%>
+RunAsDaemon <%= @runasdaemon %>
+<% end -%>
+
+<% if @datadirectory -%>
+DataDirectory <%= @datadirectory %>
+<% end -%>
+
+<% if @controlport -%>
+ControlPort <%= @controlport %>
+<% end -%>
+
+<% if @hashedcontrolpassword -%>
+HashedControlPassword <%= @hashedcontrolpassword %>
+<% end -%>
+<% if @cookieauthentication -%>
+CookieAuthentication <%= @cookieauthentication %>
+<% end %>
+<% if @cookieauthfilegroupreadable -%>
+CookieAuthFileGroupReadable <%= @cookieauthfilegroupreadable %>
+<% end -%>
+<% if @cookieauthfile -%>
+CookieAuthFile <%= @cookieauthfile %>
+<% end -%>
+
+<% if @hiddenservicedir and @hiddenserviceport  -%>
+HiddenServiceDir <%= @hiddenservicedir %>
+<% end -%>
+<% if @hiddenserviceport -%>
+<% @hiddenserviceport.each do |v| -%>
+HiddenServicePort <%= v %>
+<% end -%>
+<% end -%>
+
+<% if @orport -%>
+ORPort <%= @orport %>
+<% end -%>
+
+<% if @address -%>
+Address <%= @address %>
+<% end -%>
+
+<% if @outboundbindaddress -%>
+OutboundBindAddress <%= @outboundbindaddress %>
+<% end -%>
+
+<% if @relaybandwidthrate -%>
+RelayBandwidthRate <%= @relaybandwidthrate %>
+<% end -%>
+<% if @relaybandwidthburst -%>
+RelayBandwidthBurst <%= @relaybandwidthburst %>
+<% end -%>
+
+<% if @accountingstart -%>
+AccountingStart <%= @accountingstart %>
+<% end -%>
+
+<% if @nickname -%>
+Nickname <%= @nickname %>
+<% end -%>
+
+<% if @contactinfo -%>
+ContactInfo <%= @contactinfo %>
+<% end -%>
+
+<% if @dirport -%>
+DirPort <%= @dirport %>
+<% end -%>
+
+<% if @dirportfrontpage -%>
+DirPortFrontPage <%= @dirportfrontpage %>
+<% end -%>
+
+<% if @myfamily -%>
+MyFamily <%= @myfamily %>
+<% end -%>
+
+<% if @bridgerelay -%>
+BridgeRelay <%= @bridgerelay %>
+<% end -%>
+
+<% if @publishserverdesciptor -%>
+PublishServerDescriptor <%= @publishserverdesciptor %>
+<% end -%>
+
+<% if @circuitbuildtimeout -%>
+CircuitBuildTimeout <%= @circuitbuildtimeout %>
+<% end -%>
+
+<% if @keepaliveperiod -%>
+KeepalivePeriod <%= @keepaliveperiod %>
+<% end -%>
+
+<% if @newcircuitperiod -%>
+NewCircuitPeriod <%= @newcircuitperiod %>
+<% end -%>
+
+<% if @numentryguards -%>
+NumEntryGuards <%= @numentryguards %>
+<% end -%>
+
+<% if @dnsport -%>
+DNSPort <%= @dnsport %>
+<% end -%>
+
+<% if @automaphostsonresolve -%>
+AutomapHostsOnResolve <%= @automaphostsonresolve %>
+<% end -%>
+
+<% if @automaphostssuffixes != [] -%>
+AutomapHostsSuffixes <% @automaphostssuffixes.each do |v| %> <%= v %>,<% end %>
+<% end -%>
+
+<% if @excludeexitnodes != [] -%>
+ExcludeExitNodes {<% @excludeexitnodes.each do |v| %> <%= v %>,<% end %> }
+<% end -%>
+
+<% if @exitpolicy -%>
+<% @exitpolicy.each do |v| -%>
+ExitPolicy <%= v %>
+<% end -%>
+<% end -%>

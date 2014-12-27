@@ -32,6 +32,6 @@ class tor::config{
 		owner => 'root',
 		group => 'root',
 		path => "${tor::configdir}/torrc",
-		content => template('tor/torrc.erb'),
+		content => template('tor/etc/tor/torrc.erb'),
 	}
 }
